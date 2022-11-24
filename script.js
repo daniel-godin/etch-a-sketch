@@ -11,7 +11,7 @@ for (let i = 0; i < (16 * 16); i++) {
 // Randomizes the color each time user hovers over a box.
 for (let i = 0; i < gridItem.length; i++) {
     gridItem[i].addEventListener('mouseenter', (event) => {
-        //blackAndWhite(i); // Function to change block from white to black.
+        // blackAndWhite(i); // Function to change block from white to black.
         randomColors(i); // Function to change block to a random color and opacity.
     });
 };
@@ -49,10 +49,9 @@ function randomColors(i) {
     let red = Math.floor(Math.random()*256);
     let green = Math.floor(Math.random()*256);
     let blue = Math.floor(Math.random()*256);
-    let opacity = Math.random().toFixed(2);
-    gridItem[i].style.cssText = `background-color: rgb(${red}, ${green}, ${blue}, ${opacity});`
+    let alpha = Math.random();
+    gridItem[i].style.cssText = `background-color: rgb(${red}, ${green}, ${blue}, ${alpha});`
 }
-
 
 function removeChildNodes(parent) {
     while (parent.firstChild) {
