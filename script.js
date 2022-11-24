@@ -16,11 +16,19 @@ for (let i = 0; i < (16 * 16); i++) {
 // Randomizes the color each time user hovers over a box.
 for (let i = 0; i < gridItem.length; i++) {
     gridItem[i].addEventListener('mouseenter', (event) => {
-        let red = Math.floor(Math.random()*256);
-        let green = Math.floor(Math.random()*256);
-        let blue = Math.floor(Math.random()*256);
-        gridItem[i].style.cssText = `background-color: rgb(${red}, ${green}, ${blue});`
+        gridItem[i].style.cssText = `background-color: rgb(0, 0, 0);` // Mouseover changes to black.
+
+
+        // let red = Math.floor(Math.random()*256);
+        // let green = Math.floor(Math.random()*256);
+        // let blue = Math.floor(Math.random()*256);
+        // gridItem[i].style.cssText = `background-color: rgb(${red}, ${green}, ${blue});`
     });
+
+
+
+
+
 };
 
 function resizeGrid() {
