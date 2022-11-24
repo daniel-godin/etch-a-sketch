@@ -8,27 +8,13 @@ for (let i = 0; i < (16 * 16); i++) {
     div.classList.add('grid-item');
 }
 
-// Original for loop for black/white.  New for loop uses randomized colors.
-// for (let i = 0; i < gridItem.length; i++) {
-//     gridItem[i].addEventListener('mouseenter', e => gridItem[i].classList.add('grid-item-hovered')); // Works
-// }
-
 // Randomizes the color each time user hovers over a box.
 for (let i = 0; i < gridItem.length; i++) {
+
     gridItem[i].addEventListener('mouseenter', (event) => {
-        gridItem[i].style.cssText = `background-color: rgb(0, 0, 0);` // Mouseover changes to black.
-
-
-        // let red = Math.floor(Math.random()*256);
-        // let green = Math.floor(Math.random()*256);
-        // let blue = Math.floor(Math.random()*256);
-        // gridItem[i].style.cssText = `background-color: rgb(${red}, ${green}, ${blue});`
+        //blackAndWhite(i); // Function to change block from white to black.
+        randomColors(i); // Function to change block to a random color and opacity.
     });
-
-
-
-
-
 };
 
 function resizeGrid() {
@@ -48,21 +34,27 @@ function resizeGrid() {
         gridContainer.style.cssText = `grid-template-rows: repeat(${num}, minmax(1px, 1fr)); grid-template-columns: repeat(${num}, minmax(1px, 1fr));`
     }
 
-    // Black and white version.
-    // for (let i = 0; i < gridItem.length; i++) {
-    //     gridItem[i].addEventListener('mouseenter', e => gridItem[i].classList.add('grid-item-hovered'));
-    // }
-
     for (let i = 0; i < gridItem.length; i++) {
         gridItem[i].addEventListener('mouseenter', (event) => {
-            let red = Math.floor(Math.random()*256);
-            let green = Math.floor(Math.random()*256);
-            let blue = Math.floor(Math.random()*256);
-            gridItem[i].style.cssText = `background-color: rgb(${red}, ${green}, ${blue});`
+            //blackAndWhite(i); // Function to change block from white to black.
+            randomColors(i); // Function to change block to a random color and opacity.
         });
     };
     
 }
+
+function blackAndWhite(i) {
+    gridItem[i].style.cssText = `background-color: rgb(0, 0, 0, 1);`; // Simpler version.  Just changes CSS background color, instead of new class.  Black and White Version.
+}
+
+function randomColors(i) {
+    let red = Math.floor(Math.random()*256);
+    let green = Math.floor(Math.random()*256);
+    let blue = Math.floor(Math.random()*256);
+    let opacity = Math.random().toFixed(2);
+    gridItem[i].style.cssText = `background-color: rgb(${red}, ${green}, ${blue}, ${opacity});`
+}
+
 
 function removeChildNodes(parent) {
     while (parent.firstChild) {
